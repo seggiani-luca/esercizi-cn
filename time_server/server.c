@@ -99,7 +99,7 @@ void serve(int sd) {
 			&client_addr_len
 		);
 		if(ret < 0) {
-			// se avrebbe bloccato non ci sono più richieste, esci
+			// se errno è EAGAIN non ci sono altre richieste
 			if(errno == EAGAIN) break;
 
 			perror("Ricezione fallita");
